@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Panel</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0083B0 0%, #00B4DB 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .panel {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Login Form Styles */
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="email"], 
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus, 
+        input[type="password"]:focus {
+            border-color: #00B4DB;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 30px;
+            background-color: #00B4DB;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0083B0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        /* Privacy Policy Page Styles */
+        .privacy-policy-page {
+            text-align: center;
+        }
+
+        .privacy-policy-page h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-policy-page p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: #00B4DB;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0083B0;
+        }
+
+        /* Fade In/Out Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease;
+        }
+
+        /* Feature Page Styles */
+        .feature-panel {
+            text-align: left;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-height: 80vh; /* Set max height for responsiveness */
+            overflow-y: auto; /* Scroll if content exceeds height */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .feature-panel h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .feature-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f4faff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-option:hover {
+            background-color: #e1f5ff;
+        }
+
+        .feature-option input[type="checkbox"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .feature-option label {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel" id="panel">
+            <!-- Login Form -->
+            <form id="login-form">
+                <h1>Login to Panel</h1>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">See Features</button>
+                <div> <br>
+                    <input type="checkbox" id="privacy-policy" required>
+                    <label for="privacy-policy">I agree to the <a href="#" id="privacy-policy-link">Privacy Policy</a></label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('login-form');
+            const panel = document.getElementById('panel');
+        
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission and page refresh
+        
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+        
+                if (password === '009922') {
+                    // Correct credentials, transition to the feature page
+                    panel.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        // Replace panel content with feature page
+                        panel.innerHTML = `
+                            <div class="feature-panel">
+                                <h1>Select Game Features</h1>
+                                <div class="feature-option">
+                                    <input type="checkbox" id="feature-1">
+                                    <label for="feature-1">Enable High Sensitivity</label>
+                                </div>
+                                <div class="feature-option">
+                                    <input type="checkbox" id="feature-2">
+                                    <label for="feature-2">Enable Headshot Rate</label>
+                                </div>
+                                <div class="feature-option">
+                                    <input type="checkbox" id="feature-3">
+                                    <label for="feature-3">Disable Recoil Rate</label>
+                                </div>
+                                <div class="feature-option">
+                                    <input type="checkbox" id="feature-4">
+                                    <label for="feature-4">Disable Lagging Problems</label>
+                                </div>
+                                <div class="feature-option">
+                                    <input type="checkbox" id="feature-5">
+                                    <label for="feature-5">Disable Some Glitches</label>
+                                </div>
+                                <button id="play-game-btn" class="btn">Play Game</button>
+                            </div>
+                        `;
+                        
+                        // Reapply fade-in animation
+                        document.querySelector('.feature-panel').classList.add('fade-in');
+                        
+                        // Remove fade-out class after transition
+                        panel.classList.remove('fade-out');
+                    }, 500); // Match the duration of fade-out animation
+                } else {
+                    alert('Invalid credentials');
+                }
+            });
+        
+            document.addEventListener('click', function (event) {
+                if (event.target && event.target.id === 'play-game-btn') {
+                    // Attempt to launch Free Fire game
+                    const gameUrl = 'game://'; // URL scheme for launching the game
+                    const playStoreUrl = 'https://play.google.com/store/search?q=freefire&c=apps'; // Google Play Store URL
+        
+                    // Create an iframe element to check if the game can be launched
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = gameUrl;
+                    document.body.appendChild(iframe);
+        
+                    // Set a timeout to redirect if the game is not launched
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                        window.location.href = playStoreUrl; // Redirect to Google Play Store
+                    }, 500); // 500ms timeout for redirect (adjust if necessary)
+                }
+            });
+        
+            document.getElementById('privacy-policy-link').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+        
+                // Display Privacy Policy in the same tab
+                panel.innerHTML = `
+                    <div class="privacy-policy-page">
+                        <h1>Privacy Policy</h1>
+                        <p>This panel is intended for authorized use only. Please ensure that you follow the guidelines below:</p>
+                        <ul style="text-align:left; margin-left: 40px;">
+                            <li>Do not misuse the panel for unauthorized access or activities.</li>
+                            <li>Follow all safety protocols and regulations to avoid security issues.</li>
+                            <li>Your data is secure but ensure you are mindful of your login credentials.</li>
+                            <li>If any security breaches occur, appropriate actions will be taken.</li>
+                            <li>Respect other users of the platform and the game guidelines.</li>
+                        </ul>
+                        <p>Any violation of these guidelines could result in penalties or being restricted from using the platform.</p>
+                        <button id="back-to-login" class="btn">Back to Login</button>
+                    </div>
+                `;
+                
+                document.getElementById('back-to-login').addEventListener('click', function () {
+                    // Reload the page to return to the login form
+                    location.reload(); // This will return to the login form
+                });
+            });
+        });
+        </script>
+        
+        
+</body>
+</html>
